@@ -5,3 +5,4 @@
 * Request more info about companies and get from large DB
 * Tracking
 * Easy online request through web UI
+* Spell check / search should return similar
