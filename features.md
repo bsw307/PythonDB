@@ -7,3 +7,4 @@
 * [ ] Easy online request through web UI
 * [ ] Spell check / search should return similar
 * [ ] Add daily task through pythonanywhere
+* [ ] Add form to contact admin for personal introduction
