@@ -14,6 +14,7 @@ gc = gspread.authorize(credentials)
 
 spr = gc.open_by_url("https://docs.google.com/spreadsheets/d/1Mfy2LE_C0RRB8WIfvdKm72-aOGSFdV27JE9NAmwePnk/edit#gid=227993879")
 wks = spr.worksheet("Global networks - COPY")
+
 engine = create_engine("mysql+pymysql://Baltasar:Pumajaws@Baltasar.mysql.pythonanywhere-services.com/Baltasar$default")
 connection = engine.connect()
 
