@@ -14,7 +14,7 @@ gc = gspread.authorize(credentials)
 
 wks = gc.open("Global networks - COPY")
 
-engine = create_engine("mysql+pymysql://{Baltasar}:{Pumajaws}@{Baltasar.mysql.pythonanywhere-services.com}/{Baltasar$default}")
+engine = create_engine("mysql+pymysql://{Baltasar}:{Pumajaws}@{Baltasar.mysql.pythonanywhere-services.com}/{Baltasar$default}",pool_pre_ping=TRUE)
 
 connection = engine.connect()
 
