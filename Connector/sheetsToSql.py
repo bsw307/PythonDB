@@ -1,28 +1,53 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import mysql.connector
-
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import json
 
-scope = ['https://spreadsheets.google.com/feeds',
-         'https://www.googleapis.com/auth/drive']
+import GenerateJson
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name("Quickstart-289b63edd2a2.json", scope)
+#Load variables from json file
+scope = []
+creds = ""
+url = ""
+database = ""
+spreadsheet = ""
+table_name = ""
+
+fileName = GenerateJson.create()
+
+with open(fileName, "r") as Json_vars:
+    var = json.load(Json_vars)
+    scope = [var["scopes"]["scope_1"],var["scopes"]["scope_2"]]
+    creds = var["credentials"]
+    url = var["url"]
+    user = var["database"]["user"]
+    password = var["database"]["password"]
+    hostname = var["database"]["hostname"]
+    database_name = var["database"]["database_name"]
+    database = "mysql+pymysql://{}:{}@{}/{}".format(user,password,hostname,database_name)
+    spreadsheet = var["spreadsheet_name"]
+    table_name = var["table_name"]
+
+print(scope,"\n",creds,"\n",url,"\n",database,"\n",spreadsheet,"\n",table_name,"\n",)
+
+
+
+credentials = ServiceAccountCredentials.from_json_keyfile_name(creds, scope)
 
 gc = gspread.authorize(credentials)
 
-spr = gc.open_by_url("https://docs.google.com/spreadsheets/d/1Mfy2LE_C0RRB8WIfvdKm72-aOGSFdV27JE9NAmwePnk/edit#gid=830064553")
+spr = gc.open_by_url(url)
 
-engine = create_engine("mysql+pymysql://Baltasar:Pumajaws@Baltasar.mysql.pythonanywhere-services.com/Baltasar$default")
+engine = create_engine(database)
 connection = engine.connect()
 
-list_of_lists = spr.worksheet("Start-Up Operations & Expansion").get_all_values()
-print(list_of_lists)
+list_of_lists = spr.worksheet(spreadsheet).get_all_values()
 
 
 df = pd.DataFrame(list_of_lists)
 
-df.to_sql("new_test",engine)
+df.to_sql(table_name,engine)
 
 connection.close()
