@@ -7,9 +7,7 @@ def get_sql():
     cnxn = engine.connect()
 
     df = pd.read_sql("{}".format(input("sql command, please don't drop all my tables: ")), cnxn)
-    csvFile = df.to_csv()
-    with open("newFile.csv","w+") as new_file:
-        new_file = csvFile
+    df.to_csv("newFile.csv")
     cnxn.close()
-    
+
 get_sql()
