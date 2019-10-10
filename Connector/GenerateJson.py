@@ -36,7 +36,7 @@ def create():
                 data[i] = changeVal(i,data[i],tmp)
 
 
-        with open("test_json.json","w") as newFile:
+        with open("Settings.json","w") as newFile:
             json.dump(tmp,newFile)
         return "Settings.json"
 
