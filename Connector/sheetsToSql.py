@@ -17,7 +17,7 @@ spr = gc.open_by_url("https://docs.google.com/spreadsheets/d/1Mfy2LE_C0RRB8WIfvd
 engine = create_engine("mysql+pymysql://Baltasar:Pumajaws@Baltasar.mysql.pythonanywhere-services.com/Baltasar$default")
 connection = engine.connect()
 
-list_of_lists = spr.get_all_values()
+list_of_lists = spr.worksheet("Start-Up Operations & Expansion").get_all_values()
 print(list_of_lists)
 
 
