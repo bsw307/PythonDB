@@ -30,6 +30,8 @@ def send(Csv_file):
     gc = gspread.authorize(creds)
     sh = gc.create(input("New spreadsheet: "))
     sh.share('baltasar.salamonwelwert@gmail.com', perm_type='user', role='writer')
+    sh.share('connect-sheets-to-mysql@quickstart-1570036964435.iam.gserviceaccount.com', perm_type='user', role='writer')
+
 
     content = open(Csv_file, 'r').read()
     content = content.encode('utf-8')
