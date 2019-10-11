@@ -31,8 +31,12 @@ def send(Csv_file):
     sh = gc.create(input("New spreadsheet: "))
     sh.share('baltasar.salamonwelwert@gmail.com', perm_type='user', role='writer')
     sh.share('connect-sheets-to-mysql@quickstart-1570036964435.iam.gserviceaccount.com', perm_type='user', role='writer')
-
-
+    while True:
+      if input("Do you want to enter another email?" + "\n").lower() == "y":
+        sh.share(input("Enter new mail: "), perm_type='user', role='writer')
+      else:
+        break
+      
     content = open(Csv_file, 'r').read()
     content = content.encode('utf-8')
     gc.import_csv(sh.id, content)
