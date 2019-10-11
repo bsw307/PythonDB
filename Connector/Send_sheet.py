@@ -32,6 +32,7 @@ def send(Csv_file):
     sh.share('baltasar.salamonwelwert@gmail.com', perm_type='user', role='writer')
 
     content = open(Csv_file, 'r').read()
+    content = content.encode('utf-8')
     gc.import_csv(sh, content)
 
 send(input("Which file do you want to send?"))
