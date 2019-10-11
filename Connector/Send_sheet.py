@@ -4,7 +4,7 @@ import json
 import GenerateJson
 
 scope = []
-creds = ""
+credentials = ""
 url = ""
 database = ""
 spreadsheet = ""
@@ -15,7 +15,7 @@ fileName = GenerateJson.create()
 with open(fileName, "r") as Json_vars:
     var = json.load(Json_vars)
     scope = [var["scopes"]["scope_1"],var["scopes"]["scope_2"]]
-    creds = var["credentials"]
+    credentials = var["credentials"]
     url = var["url"]
     user = var["database"]["user"]
     password = var["database"]["password"]
@@ -25,7 +25,8 @@ with open(fileName, "r") as Json_vars:
     spreadsheet = var["spreadsheet_name"]
 
 def send(Csv_file):
-            
+    
+    creds = ServiceAccountCredentials.from_json_keyfile_name(credentials, scope)
     gc = gspread.authorize(creds)
     sh = gc.create(input("New spreadsheet: "))
     sh.share('baltasar.salamonwelwert@gmail.com', perm_type='user', role='writer')
