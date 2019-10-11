@@ -21,13 +21,13 @@ def changeVal(key,val,file):
 
 
 def create():   
-    
+    current = "Settings.json"
     #Iterative loop goes through all json settings to change them
     if input("Do you want to use the same settings as last time?y/n" + "\n" ).lower() == "y":
-        return "Settings.json"
+        return current
 
     else:
-        with open("Settings.json","r") as json_file:
+        with open("/Congif_files/{}".format(current),"r") as json_file:
             data = json.load(json_file)
             tmp = data
             
@@ -36,7 +36,7 @@ def create():
                 data[i] = changeVal(i,data[i],tmp)
 
 
-        with open("Settings.json","w") as newFile:
+        with open("/Congif_files/{}".format(current),"w") as newFile:
             json.dump(tmp,newFile)
         return "Settings.json"
 

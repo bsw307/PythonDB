@@ -12,9 +12,9 @@ table_name = ""
 
 def Json_settings():
         
-    fileName = GenerateJson.create()
+    current = GenerateJson.create()
 
-    with open(fileName, "r") as Json_vars:
+    with open("/Congif_files/{}".format(current), "r") as Json_vars:
         var = json.load(Json_vars)
         scope = [var["scopes"]["scope_1"],var["scopes"]["scope_2"]]
         credentials = var["credentials"]

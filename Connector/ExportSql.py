@@ -10,7 +10,7 @@ def get_sql():
     if input("Current settings file is {}. Do you want to change the file?y/n".format(current) + "\n" ).lower() == "y":
         current = input("New: " + "\n")
 
-    with open(current,"r") as json_file:
+    with open("/Congif_files/{}".format(current),"r") as json_file:
 
         var = json.load(json_file)
 
@@ -25,7 +25,14 @@ def get_sql():
     engine = create_engine(database)
     cnxn = engine.connect()
 
-    df = pd.read_sql("{}".format(input("sql command, please don't drop all my tables: ")), cnxn)
+    command = "{}".format(input("Enter sql select command : "))
+    while True:
+        if "drop" in command:
+            command = "{}".format(input("To drop table use sql console instead. New: "))
+        else:
+            break
+
+    df = pd.read_sql(command, cnxn)
     df.to_csv("{}.csv".format(input("New file name: ")))
     cnxn.close()
 
