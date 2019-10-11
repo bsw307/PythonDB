@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import json
-from itertools import iteritems
+#from itertools import iteritems
 import GenerateJson
 
 def get_sql():
