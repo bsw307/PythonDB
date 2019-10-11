@@ -143,4 +143,5 @@ dmypy.json
 #Specific file
 test_json.json
 backup.json
+*.csv
 # End of https://www.gitignore.io/api/python
