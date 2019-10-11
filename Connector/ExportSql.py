@@ -11,7 +11,7 @@ def get_sql():
     if input("Current settings file is {}. Do you want to change the file?y/n".format(current) + "\n" ).lower() == "y":
         current = input("New: " + "\n")
 
-    with open(current,"w") as json_file:
+    with open(current,"r") as json_file:
 
         var = json.load(json_file)
 
