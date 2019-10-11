@@ -7,6 +7,7 @@ from Settings import *
 
 def send(Csv_file):
     
+    #Load variables from settings.json
     Json_settings()
 
     credentials = ServiceAccountCredentials.from_json_keyfile_name(creds, scope)
