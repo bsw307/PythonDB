@@ -35,6 +35,6 @@ def send(Csv_file):
 
     content = open(Csv_file, 'r').read()
     content = content.encode('utf-8')
-    gc.import_csv(sh, content)
+    gc.import_csv(sh.id, content)
 
 send(input("Which file do you want to send?"))
