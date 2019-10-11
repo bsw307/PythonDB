@@ -1,13 +1,20 @@
 import pandas as pd
 from sqlalchemy import create_engine
+import json
+
 
 def get_sql():
+    
+    var = json.load("Settings.json")
+    hostname = "mysql+pymysql://{}:{}@{}/{}".format(var["database"]["user"],var["database"]["password"],var["database"]["hostname"],var["database"]["database_name"])
+    if input("Current hostname is {}. Do you want to change the hostname?y/n".format(hostname) + "\n" ).lower() == "y":
+            var = input("New: " + "\n")
 
-    engine = create_engine("mysql+pymysql://Baltasar:Pumajaws@Baltasar.mysql.pythonanywhere-services.com/Baltasar$default")
+    engine = create_engine(hostname)
     cnxn = engine.connect()
 
     df = pd.read_sql("{}".format(input("sql command, please don't drop all my tables: ")), cnxn)
-    df.to_csv("newFile.csv")
+    df.to_csv("{}.csv".format(input("New file name: ")))
     cnxn.close()
 
 get_sql()
