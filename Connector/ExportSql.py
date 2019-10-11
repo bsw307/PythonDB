@@ -1,7 +1,6 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import json
-#from itertools import iteritems
 import GenerateJson
 
 def get_sql():
@@ -16,7 +15,7 @@ def get_sql():
         var = json.load(json_file)
 
         #Iterates through necessary variables in json file
-        for key,value in var["database"].iteritems():
+        for key,value in var["database"].items():
             if input("Current {} is {}. Do you want to change the {}?y/n".format(key,value,key) + "\n" ).lower() == "y":
                 var["database"][key] = input("New: " + "\n")
 
