@@ -36,6 +36,7 @@ def get_sql():
     tmp_file = "{}.csv".format(input("New file name: "))
     df.to_csv(tmp_file)
     cnxn.close()
+    
     if input("Do you want to send this to google sheets?").lower() == "y":
         Send_sheet.send(tmp_file)
 

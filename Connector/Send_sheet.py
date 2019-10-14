@@ -88,4 +88,4 @@ def send(Csv_file):
 
 files = [element for element in os.listdir() if element.endswith(".csv")]
 
-send(input("Which file do you want to send? Eligble files: {}".format(files)))
+#send(input("Which file do you want to send? Eligble files: {}".format(files)))
