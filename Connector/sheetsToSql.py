@@ -11,6 +11,7 @@ from Settings import *
 def sheet_to_sql():
 
     Json_settings()
+    print(creds,scope)
     #Get credentials
     credentials = ServiceAccountCredentials.from_json_keyfile_name(creds, scope)
 

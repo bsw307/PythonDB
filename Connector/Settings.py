@@ -17,7 +17,7 @@ def Json_settings():
     with open("Config_files/{}".format(current), "r") as Json_vars:
         var = json.load(Json_vars)
         scope = [var["scopes"]["scope_1"],var["scopes"]["scope_2"]]
-        credentials = var["credentials"]
+        creds = var["credentials"]
         url = var["url"]
         user = var["database"]["user"]
         password = var["database"]["password"]
