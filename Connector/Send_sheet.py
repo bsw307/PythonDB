@@ -58,12 +58,11 @@ def send(Csv_file):
 
       reader = csv.reader(Csv_file, delimiter=',')
 
-      for i, row in enumerate(reader):
+      for row in reader:
         print("Row: ", row)
-        for x, column in enumerate(row):
+        for column in row:
           print("column: ", column)
-          tmpcell.append(row)
-          print("Appended: ",i,x)
+          tmpcell.append(column)
 
     for i,val in enumerate(tmpcell):
       cell_list[i].value = val
