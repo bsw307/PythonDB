@@ -25,5 +25,5 @@ def Json_settings():
         database_name = var["database"]["database_name"]
         database = "mysql+pymysql://{}:{}@{}/{}".format(user,password,hostname,database_name)
         spreadsheet = var["spreadsheet_name"]
-
+    print("djsa", creds)
 print("Test", creds)
