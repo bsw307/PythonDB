@@ -18,7 +18,6 @@ def Json_settings():
         var = json.load(Json_vars)
         scope = [var["scopes"]["scope_1"],var["scopes"]["scope_2"]]
         creds = var["credentials"]
-        print("test: ", creds)
         url = var["url"]
         user = var["database"]["user"]
         password = var["database"]["password"]
@@ -26,3 +25,5 @@ def Json_settings():
         database_name = var["database"]["database_name"]
         database = "mysql+pymysql://{}:{}@{}/{}".format(user,password,hostname,database_name)
         spreadsheet = var["spreadsheet_name"]
+
+print("Test", creds)
