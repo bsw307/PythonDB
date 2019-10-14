@@ -44,9 +44,8 @@ def sheet_to_sql():
 
     #Get data from spreadsheet and convert to sql
     list_of_lists = spr.worksheet(spreadsheet).get_all_values()
-    print(list_of_lists[0])
     df = pd.DataFrame(list_of_lists)
-    df.to_sql(table_name,engine)
+    df.to_sql(table_name,engine,index_label = list_of_lists[0])
 
     #Close connection to database
     connection.close()
