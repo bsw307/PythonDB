@@ -61,6 +61,7 @@ def send(Csv_file):
       for x, column in enumerate(row):
         print("column: ", column)
         tmpcell.append(content[i][x])
+        print("Appended: ",i,x)
 
     for i,val in enumerate(tmpcell):
       cell_list[i].value = val
