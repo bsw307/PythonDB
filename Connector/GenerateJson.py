@@ -27,7 +27,7 @@ def create():
         return current
 
     else:
-        with open("/Config_files/{}".format(current),"r") as json_file:
+        with open("Config_files/{}".format(current),"r") as json_file:
             data = json.load(json_file)
             tmp = data
             
@@ -36,7 +36,7 @@ def create():
                 data[i] = changeVal(i,data[i],tmp)
 
 
-        with open("/Config_files/{}".format(current),"w") as newFile:
+        with open("Config_files/{}".format(current),"w") as newFile:
             json.dump(tmp,newFile)
         return "Settings.json"
 
