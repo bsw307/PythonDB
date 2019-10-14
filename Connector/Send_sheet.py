@@ -62,7 +62,7 @@ def send(Csv_file):
         print("Row: ", row)
         for x, column in enumerate(row):
           print("column: ", column)
-          tmpcell.append(content[i][x])
+          tmpcell.append(row)
           print("Appended: ",i,x)
 
     for i,val in enumerate(tmpcell):
