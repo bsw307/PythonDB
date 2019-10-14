@@ -50,7 +50,7 @@ def send(Csv_file):
     #Test bulk update
     worksheet = sh.add_worksheet(title="A worksheet", rows="100", cols="20")
     reader = csv.reader(content, delimiter=',')
-    cell_list = worksheet.range('A1;A2')
+    cell_list = worksheet.range('A1:A2')
     for row in reader:
       print("Row: ", row)
       for column in row:
