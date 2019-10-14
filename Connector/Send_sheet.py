@@ -3,6 +3,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import json
 import GenerateJson
 import os
+import csv
 from GenerateJson import *
 #from Settings import *
 
@@ -45,8 +46,22 @@ def send(Csv_file):
         break
 
     content = open(Csv_file, 'r').read()
+
+    #Test bulk update
+    worksheet = sh.add_worksheet(title="A worksheet", rows="100", cols="20")
+    reader = csv.reader(content, delimiter=',')
+    cell_list = worksheet.range('A1;A2')
+    for row in reader:
+      for column in row:
+        cell_list[row].append(content[row][column])
+    worksheet.update_cells(cell_list)
+        
+
+    #Regular
+    """
     content = content.encode('utf-8')
     gc.import_csv(sh.id, content)
+    """
 
 files = [element for element in os.listdir() if element.endswith(".csv")]
 
