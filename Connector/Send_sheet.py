@@ -63,9 +63,10 @@ def send(Csv_file):
 
       for row in reader:
         row_count += 1
-        print("Row: ", row)
+        print("Row: ", row)          
         for column in row:
-          column_count += 1
+          if row_count == 1:
+            column_count += 1
           print("column: ", column)
           tmpcell.append(column)
 
