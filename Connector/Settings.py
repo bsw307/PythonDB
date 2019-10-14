@@ -2,13 +2,14 @@ import json
 import GenerateJson
 
 #Load variables from json file
+"""
 scope = []
 creds = ""
 url = ""
 database = ""
 spreadsheet = ""
 table_name = ""
-
+"""
 
 def Json_settings():
     
@@ -16,7 +17,6 @@ def Json_settings():
 
     with open("Config_files/{}".format(current), "r") as Json_vars:
         var = json.load(Json_vars)
-        global scope, creds, url, database, spreadsheet, table_name
         scope = [var["scopes"]["scope_1"],var["scopes"]["scope_2"]]
         creds = var["credentials"]
         url = var["url"]
@@ -26,3 +26,5 @@ def Json_settings():
         database_name = var["database"]["database_name"]
         database = "mysql+pymysql://{}:{}@{}/{}".format(user,password,hostname,database_name)
         spreadsheet = var["spreadsheet_name"]
+        table_name = var["table_name"]
+    return scope, creds, url, database, spreadsheet, table_name
