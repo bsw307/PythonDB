@@ -4,7 +4,7 @@ import mysql.connector
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
-
+from GenerateJson import *
 #from Settings import *
 
 scope = []
@@ -18,7 +18,7 @@ def sheet_to_sql():
 
     #Json_settings()
 
-    current = GenerateJson.create()
+    current = create()
 
     with open("Config_files/{}".format(current), "r") as Json_vars:
         var = json.load(Json_vars)
