@@ -33,8 +33,12 @@ def send(Csv_file):
         table_name = var["table_name"]    #Get credentials
     credentials = ServiceAccountCredentials.from_json_keyfile_name("Config_files/{}".format(creds), scope)
     gc = gspread.authorize(credentials)
+    
+    sh_name = spreadsheet
+    if input("Current spreadsheet is {}. Do you want to change the spreadsheet?y/n".format(spreadsheet) + "\n" ).lower() == "y":
+      sh_name = input("New: " + "\n")
+    sh = gc.open(sh_name)
 
-    sh = gc.open("test")
     """
     sh = gc.create(input("New spreadsheet: "))
     sh.share('baltasar.salamonwelwert@gmail.com', perm_type='user', role='writer')
@@ -48,21 +52,27 @@ def send(Csv_file):
       else:
         break
 
-    content = open(Csv_file, 'r').read()
+    #content = open(Csv_file, 'r').read()
 
-    #Test bulk update
-    worksheet = sh.add_worksheet(title="A worksheet", rows="100", cols="20")
-    cell_list = worksheet.range('A1:B1000')
     tmpcell = []
+    row_count = 0
+    column_count = 0
     with open(Csv_file,"r") as Current_file:
 
       reader = csv.reader(Current_file, delimiter=',')
 
       for row in reader:
+        row_count += 1
         print("Row: ", row)
         for column in row:
+          column_count += 1
           print("column: ", column)
           tmpcell.append(column)
+
+    #Test bulk update
+    worksheet = sh.add_worksheet(title=input("Name of new sheet: "), rows=row_count, cols=column_count)
+    #DOES NOT WORK FOR MORE THAN A - Z
+    cell_list = worksheet.range('A1:{}{}'.format(chr(column_count + 65),row_count))
 
     for i,val in enumerate(tmpcell):
       cell_list[i].value = val
