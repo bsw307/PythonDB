@@ -34,10 +34,12 @@ def send(Csv_file):
     credentials = ServiceAccountCredentials.from_json_keyfile_name("Config_files/{}".format(creds), scope)
     gc = gspread.authorize(credentials)
 
-    #sh = gc.create(input("New spreadsheet: "))
     sh = gc.open("test")
+    """
+    sh = gc.create(input("New spreadsheet: "))
     sh.share('baltasar.salamonwelwert@gmail.com', perm_type='user', role='writer')
     sh.share('connect-sheets-to-mysql@quickstart-1570036964435.iam.gserviceaccount.com', perm_type='user', role='writer')
+    """
 
     #Loop to share with other people
     while True:
@@ -51,13 +53,15 @@ def send(Csv_file):
     #Test bulk update
     worksheet = sh.add_worksheet(title="A worksheet", rows="100", cols="20")
     reader = csv.reader(content, delimiter=',')
-    cell_list = worksheet.range('A1:A2')
+    cell_list = worksheet.range('A1:B1000')
     tmpcell = []
+    
     for i, row in enumerate(reader):
       print("Row: ", row)
       for x, column in enumerate(row):
         print("column: ", column)
         tmpcell.append(content[i][x])
+
     for i,val in enumerate(tmpcell):
       cell_list[i].value = val
     worksheet.update_cells(cell_list)
