@@ -34,7 +34,8 @@ def send(Csv_file):
     credentials = ServiceAccountCredentials.from_json_keyfile_name("Config_files/{}".format(creds), scope)
     gc = gspread.authorize(credentials)
 
-    sh = gc.create(input("New spreadsheet: "))
+    #sh = gc.create(input("New spreadsheet: "))
+    sh = gc.open("test")
     sh.share('baltasar.salamonwelwert@gmail.com', perm_type='user', role='writer')
     sh.share('connect-sheets-to-mysql@quickstart-1570036964435.iam.gserviceaccount.com', perm_type='user', role='writer')
 
