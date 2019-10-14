@@ -52,16 +52,18 @@ def send(Csv_file):
 
     #Test bulk update
     worksheet = sh.add_worksheet(title="A worksheet", rows="100", cols="20")
-    reader = csv.reader(content, delimiter=',')
     cell_list = worksheet.range('A1:B1000')
     tmpcell = []
-    
-    for i, row in enumerate(reader):
-      print("Row: ", row)
-      for x, column in enumerate(row):
-        print("column: ", column)
-        tmpcell.append(content[i][x])
-        print("Appended: ",i,x)
+    with open(content,"r"):
+      
+      reader = csv.reader(content, delimiter=',')
+
+      for i, row in enumerate(reader):
+        print("Row: ", row)
+        for x, column in enumerate(row):
+          print("column: ", column)
+          tmpcell.append(content[i][x])
+          print("Appended: ",i,x)
 
     for i,val in enumerate(tmpcell):
       cell_list[i].value = val
