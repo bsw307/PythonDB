@@ -51,11 +51,14 @@ def send(Csv_file):
     worksheet = sh.add_worksheet(title="A worksheet", rows="100", cols="20")
     reader = csv.reader(content, delimiter=',')
     cell_list = worksheet.range('A1:A2')
+    tmpcell = []
     for row in reader:
       print("Row: ", row)
       for column in row:
         print("column: ", column)
-        cell_list[row].append(content[row][column])
+        tmpcell.append(content[row][column])
+    for i,val in enumerate(tmpcell):
+      cell_list[i].value = val
     worksheet.update_cells(cell_list)
         
 
