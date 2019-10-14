@@ -7,6 +7,12 @@ import json
 
 from Settings import *
 
+scope = []
+creds = ""
+url = ""
+database = ""
+spreadsheet = ""
+table_name = ""
 
 def sheet_to_sql():
 
