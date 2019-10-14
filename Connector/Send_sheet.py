@@ -30,7 +30,7 @@ def send(Csv_file):
         database = "mysql+pymysql://{}:{}@{}/{}".format(user,password,hostname,database_name)
         spreadsheet = var["spreadsheet_name"]
         table_name = var["table_name"]    #Get credentials
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(creds, scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name("Config_files/{}".format(creds), scope)
     gc = gspread.authorize(credentials)
 
     sh = gc.create(input("New spreadsheet: "))
@@ -48,6 +48,6 @@ def send(Csv_file):
     content = content.encode('utf-8')
     gc.import_csv(sh.id, content)
 
-files = [element for element in os.listdir() if element.endswith(".json")]
+files = [element for element in os.listdir() if element.endswith(".csv")]
 
 send(input("Which file do you want to send? Eligble files: {}".format(files)))
