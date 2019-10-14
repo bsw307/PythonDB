@@ -18,6 +18,7 @@ def Json_settings():
         var = json.load(Json_vars)
         scope = [var["scopes"]["scope_1"],var["scopes"]["scope_2"]]
         creds = var["credentials"]
+        print("test: ", creds)
         url = var["url"]
         user = var["database"]["user"]
         password = var["database"]["password"]
