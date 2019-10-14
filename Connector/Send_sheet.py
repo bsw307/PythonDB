@@ -54,9 +54,9 @@ def send(Csv_file):
     worksheet = sh.add_worksheet(title="A worksheet", rows="100", cols="20")
     cell_list = worksheet.range('A1:B1000')
     tmpcell = []
-    with open(content,"r"):
-      
-      reader = csv.reader(content, delimiter=',')
+    with open(Csv_file,"r"):
+
+      reader = csv.reader(Csv_file, delimiter=',')
 
       for i, row in enumerate(reader):
         print("Row: ", row)
