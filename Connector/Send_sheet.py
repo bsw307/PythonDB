@@ -34,10 +34,10 @@ def send(Csv_file):
     credentials = ServiceAccountCredentials.from_json_keyfile_name("Config_files/{}".format(creds), scope)
     gc = gspread.authorize(credentials)
     
-    sh_name = spreadsheet
-    if input("Current spreadsheet is {}. Do you want to change the spreadsheet?y/n".format(spreadsheet) + "\n" ).lower() == "y":
+    sh_name = url
+    if input("Current url is {}. Do you want to change the spreadsheet?y/n".format(url) + "\n" ).lower() == "y":
       sh_name = input("New: " + "\n")
-    sh = gc.open(sh_name)
+    sh = gc.open_by_url(sh_name)
 
     """
     sh = gc.create(input("New spreadsheet: "))
