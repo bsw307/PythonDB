@@ -9,7 +9,7 @@ def get_sql():
     if input("Current settings file is {}. Do you want to change the file?y/n".format(current) + "\n" ).lower() == "y":
         current = input("New: " + "\n")
 
-    with open("/Congif_files/{}".format(current),"r") as json_file:
+    with open("Config_files/{}".format(current),"r") as json_file:
 
         var = json.load(json_file)
 
