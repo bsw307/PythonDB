@@ -73,7 +73,7 @@ def send(Csv_file):
     #Test bulk update
     worksheet = sh.add_worksheet(title=input("Name of new sheet: "), rows=row_count, cols=column_count)
     #DOES NOT WORK FOR MORE THAN A - Z
-    cell_list = worksheet.range('A1:{}{}'.format(chr(column_count + 65),row_count))
+    cell_list = worksheet.range('A1:{}{}'.format(chr(column_count + 64),row_count))
 
     for i,val in enumerate(tmpcell):
       cell_list[i].value = val
