@@ -11,7 +11,7 @@ table_name = ""
 
 
 def Json_settings():
-        
+    
     current = GenerateJson.create()
 
     with open("/Congif_files/{}".format(current), "r") as Json_vars:
