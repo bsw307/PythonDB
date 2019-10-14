@@ -5,7 +5,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
 
-from Settings import *
+#from Settings import *
 
 scope = []
 creds = ""
@@ -16,9 +16,22 @@ table_name = ""
 
 def sheet_to_sql():
 
-    Json_settings()
-    print("test",creds,scope)
-    #Get credentials
+    #Json_settings()
+
+    current = GenerateJson.create()
+
+    with open("Config_files/{}".format(current), "r") as Json_vars:
+        var = json.load(Json_vars)
+        scope = [var["scopes"]["scope_1"],var["scopes"]["scope_2"]]
+        creds = var["credentials"]
+        url = var["url"]
+        user = var["database"]["user"]
+        password = var["database"]["password"]
+        hostname = var["database"]["hostname"]
+        database_name = var["database"]["database_name"]
+        database = "mysql+pymysql://{}:{}@{}/{}".format(user,password,hostname,database_name)
+        spreadsheet = var["spreadsheet_name"]
+        table_name = var["table_name"]    #Get credentials
     credentials = ServiceAccountCredentials.from_json_keyfile_name(creds, scope)
 
     #Connect to sheets
