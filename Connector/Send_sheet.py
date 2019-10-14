@@ -52,9 +52,9 @@ def send(Csv_file):
     reader = csv.reader(content, delimiter=',')
     cell_list = worksheet.range('A1:A2')
     tmpcell = []
-    for i, row in reader:
+    for i, row in enumerate(reader):
       print("Row: ", row)
-      for x, column in row:
+      for x, column in enumerate(row):
         print("column: ", column)
         tmpcell.append(content[i][x])
     for i,val in enumerate(tmpcell):
