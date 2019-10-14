@@ -32,7 +32,7 @@ def sheet_to_sql():
         database = "mysql+pymysql://{}:{}@{}/{}".format(user,password,hostname,database_name)
         spreadsheet = var["spreadsheet_name"]
         table_name = var["table_name"]    #Get credentials
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(creds, scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name("Config_files/{}".format(creds), scope)
 
     #Connect to sheets
     gc = gspread.authorize(credentials)
