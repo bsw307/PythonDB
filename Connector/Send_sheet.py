@@ -52,7 +52,9 @@ def send(Csv_file):
     reader = csv.reader(content, delimiter=',')
     cell_list = worksheet.range('A1;A2')
     for row in reader:
+      print("Row: ", row)
       for column in row:
+        print("column: ", column)
         cell_list[row].append(content[row][column])
     worksheet.update_cells(cell_list)
         
