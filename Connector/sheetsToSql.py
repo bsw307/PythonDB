@@ -44,8 +44,12 @@ def sheet_to_sql():
 
     #Get data from spreadsheet and convert to sql
     list_of_lists = spr.worksheet(spreadsheet).get_all_values()
+    labels = list_of_lists[0]
     df = pd.DataFrame(list_of_lists)
-    df.columns = list_of_lists[0]
+    if input("Do you want to change url is {}. Do you want to change the url?y/n".format(url) + "\n" ).lower() == "y":
+        for i in range(len(labels)):
+            labels[i] = input("What would you like to call {} ".format(list_of_lists[0][i]))
+        df.columns = labels
     df.to_sql(table_name,engine)
 
     #Close connection to database
