@@ -1,6 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import json
+import Send_sheet
 
 def get_sql():
 
@@ -32,7 +33,10 @@ def get_sql():
             break
 
     df = pd.read_sql(command, cnxn)
-    df.to_csv("{}.csv".format(input("New file name: ")))
+    tmp_file = "{}.csv".format(input("New file name: "))
+    df.to_csv(tmp_file)
     cnxn.close()
+    if input("Do you want to send this to google sheets?").lower() == "y":
+        Send_sheet.send(tmp_file)
 
 get_sql()

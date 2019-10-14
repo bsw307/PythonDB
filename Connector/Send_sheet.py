@@ -35,7 +35,7 @@ def send(Csv_file):
     gc = gspread.authorize(credentials)
     
     sh_name = url
-    if input("Current url is {}. Do you want to change the spreadsheet?y/n".format(url) + "\n" ).lower() == "y":
+    if input("Current url is {}. Do you want to change the url?y/n".format(url) + "\n" ).lower() == "y":
       sh_name = input("New: " + "\n")
     sh = gc.open_by_url(sh_name)
 
