@@ -50,7 +50,7 @@ def sheet_to_sql():
         for i in range(len(labels)):
             labels[i] = input("What would you like to call {} ".format(list_of_lists[0][i]))
         df.columns = labels
-    df.to_sql(table_name,engine)
+    df.to_sql(table_name,engine,dtype = Varchar)
 
     #Close connection to database
     connection.close()

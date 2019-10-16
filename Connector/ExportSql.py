@@ -34,7 +34,7 @@ def get_sql():
 
     df = pd.read_sql(command, cnxn)
     tmp_file = "{}.csv".format(input("New file name: "))
-    df.to_csv(tmp_file)
+    df.to_csv(tmp_file) 
     cnxn.close()
     
     if input("Do you want to send this to google sheets?").lower() == "y":
