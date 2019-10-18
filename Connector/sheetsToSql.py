@@ -46,7 +46,7 @@ def sheet_to_sql():
     list_of_lists = spr.worksheet(spreadsheet).get_all_values()
     labels = list_of_lists[0]
     df = pd.DataFrame(list_of_lists)
-    if input("Do you want to change the labels. y/n","\n" ).lower() == "y":
+    if input("Do you want to change the labels. y/n \n" ).lower() == "y":
         for i in range(len(labels)):
             labels[i] = input("What would you like to call {} ".format(list_of_lists[0][i]))
         df.columns = labels
