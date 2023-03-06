@@ -12,7 +12,7 @@ This part serves as a backend to a django app that retrieves and formats data wh
 ***
 
 ## ~Actual app is hosted on [pythonanywhere](pythonanywhere.com)~
-If you want access write to me at baltasar.salamonwelwert@gmail.com
+This app is no longer in use. If you want access write to me at baltasar.salamonwelwert@gmail.com
 
 ## Features
 - Automatically update mysql database based on google sheet
