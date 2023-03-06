@@ -1,5 +1,5 @@
 # PythonDB
-Automatic database interaction for global networks database.
+I wrote this program to make it possible for people in my team to transition away from relying on company-wide google sheets for critical information. The intention was to make an SQL database that would mirror any changes in the google sheets, and vice versa. 
 
 The project is split in two parts
 
@@ -11,8 +11,8 @@ This part serves as a backend to a django app that retrieves and formats data wh
 
 ***
 
-## Actual app is hosted on [pythonanywhere](pythonanywhere.com)
-If you want access write to me at baltasar.salamon@startupchile.org
+## ~~Actual app is hosted on [pythonanywhere](pythonanywhere.com)
+If you want access write to me at baltasar.salamonwelwert@gmail.com
 
 ## Features
 - Automatically update mysql database based on google sheet
