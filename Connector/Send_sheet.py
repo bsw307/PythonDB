@@ -39,11 +39,6 @@ def send(Csv_file):
       sh_name = input("New: " + "\n")
     sh = gc.open_by_url(sh_name)
 
-    """
-    sh = gc.create(input("New spreadsheet: "))
-    sh.share('baltasar.salamonwelwert@gmail.com', perm_type='user', role='writer')
-    sh.share('connect-sheets-to-mysql@quickstart-1570036964435.iam.gserviceaccount.com', perm_type='user', role='writer')
-    """
 
     #Loop to share with other people
     while True:
